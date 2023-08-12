@@ -4,7 +4,9 @@ import { isValid } from "./formValidation";
 
 type HandlersReturn = {
   handleChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e:
+      | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+      | React.FormEvent<HTMLFieldSetElement>
   ) => void;
   handleSubmit: (
     e: React.FormEvent<HTMLFormElement>,
@@ -15,9 +17,12 @@ type HandlersReturn = {
 
 export const useHandlers = (initialState: FormState): HandlersReturn => {
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e:
+      | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+      | React.FormEvent<HTMLFieldSetElement>
   ) => {
-    const { name, value } = e.target;
+    const target = e.target as HTMLInputElement | HTMLTextAreaElement;
+    const { name, value } = target;
     // ... any other logic specific to handleChange
     return { type: "SET_VALUE", name, value };
   };
