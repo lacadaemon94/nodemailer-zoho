@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import styles from "../../styles/contact.module.css";
 import { formReducer, initialState } from "@/app/utils/formReducer";
-import { useHandlers } from "@/app/utils/formHandlers";
+import { formHandlers } from "@/app/utils/formHandlers";
 
 type Props = {
   onSubmitSuccess?: () => void;
@@ -20,12 +20,14 @@ const Form: React.FC<Props> = ({ onSubmitSuccess }) => {
       initial={{ opacity: 0, x: 40 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
-      transition={{ type: 'spring', duration: 1.5 }}
+      transition={{ type: "spring", duration: 1.5 }}
     >
-      <form className={styles.form} onSubmit={(e) => handleSubmit(e, dispatch, state)}>
-      </form>
-        {/* ... Rest of the form JSX ... */}
-        <ToastContainer />
+      <form
+        className={styles.form}
+        onSubmit={(e) => handleSubmit(e, dispatch, state)}
+      ></form>
+      {/* ... Rest of the form JSX ... */}
+      <ToastContainer />
     </motion.div>
   );
 };
