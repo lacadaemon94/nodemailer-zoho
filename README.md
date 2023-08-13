@@ -1,34 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Nodemailer with Zoho and Next.js
 
-## Getting Started
+This repository provides a setup to use Nodemailer with Zoho in a Next.js application. It allows you to send emails using the Zoho SMTP service through a Next.js API route.
 
-First, run the development server:
+## Features
 
+- **Next.js API Routes**: Utilizes the API routes feature of Next.js to handle email sending functionality.
+- **Nodemailer with Zoho**: Uses Nodemailer along with Zoho's SMTP service for sending emails.
+- **Environment Variable Configuration**: Allows easy configuration of Zoho credentials and other settings using environment variables.
+
+## Setup
+
+1. **Clone the Repository**:
+   
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+   git clone https://github.com/lacadaemon94/nodemailer-zoho.git
+   cd nodemailer-zoho
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install Dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Configure Environment Variables
 
-## Learn More
+Create a .env.local file in the root directory of the project. Add the following environment variables:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+ZOHO_USER=your_zoho_email@example.com
+ZOHO_PASSWORD=your_zoho_password
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Replace `your_zoho_email@example.com` with your Zoho email and `your_zoho_password` with your Zoho password or app-specific password if you have 2FA enabled.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+4. Sending Emails:
+To send an email, make a POST request to the `/api/contact` endpoint with the necessary payload.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contributing
+If you find any issues or have suggestions, please open an issue or submit a pull request.
