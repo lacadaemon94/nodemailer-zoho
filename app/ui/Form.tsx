@@ -162,7 +162,7 @@ const Form: React.FC<Props> = ({ onSubmitSuccess }) => {
                   : "var(--color-neutral-light-2)",
             }}
           >
-            {state.messageLength}/250
+            {state.values.message.length}/250
           </div>
         </div>
         <Button
