@@ -14,6 +14,7 @@ import LoadingIcon from "@/app/assets/icons/LoadingIcon";
 import DoneIcon from "@/app/assets/icons/DoneIcon";
 
 // Styles
+import "react-toastify/dist/ReactToastify.css";
 import styles from "../styles/contact.module.css";
 
 type Props = {
@@ -23,7 +24,7 @@ type Props = {
 
 const Form: React.FC<Props> = ({ onSubmitSuccess }) => {
   const [state, dispatch] = useReducer(formReducer, initialState);
-  const { handleChange, handleSubmit } = useHandlers(initialState);
+  const { handleChange, handleSubmit } = useHandlers(initialState, dispatch);
 
   return (
     <motion.div
@@ -161,7 +162,7 @@ const Form: React.FC<Props> = ({ onSubmitSuccess }) => {
                   : "var(--color-neutral-light-2)",
             }}
           >
-            {state.values.message.length}/250
+            {state.messageLength}/250
           </div>
         </div>
         <Button

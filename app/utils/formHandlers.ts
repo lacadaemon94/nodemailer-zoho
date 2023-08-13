@@ -15,7 +15,10 @@ type HandlersReturn = {
   ) => Promise<void>;
 };
 
-export const useHandlers = (initialState: FormState): HandlersReturn => {
+export const useHandlers = (
+  initialState: FormState,
+  dispatch: React.Dispatch<FormAction>
+): HandlersReturn => {
   const handleChange = (
     e:
       | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -24,7 +27,7 @@ export const useHandlers = (initialState: FormState): HandlersReturn => {
     const target = e.target as HTMLInputElement | HTMLTextAreaElement;
     const { name, value } = target;
     // ... any other logic specific to handleChange
-    return { type: "SET_VALUE", name, value };
+    dispatch({ type: "SET_VALUE", name, value });
   };
 
   const handleSubmit = async (
